@@ -6,78 +6,51 @@
 </head>
 
 <body>
-    <h1>JS Basics!</h1>
+    <h1 id="testh1">JS Basics!</h1>
+    <div id="container" class="box">
+
+        <button id="butt123"> criar quadrado vermelho</button>
+    </div>
+
 
     <script>
         //javascript
-        let address = {
-            street: "Pinheiros Street",
-            number: 1293,
-            block: "center",
-            city: "são paulo",
-            uf: "SP"
+        const butt = document.querySelector('#butt123');
+        const container = document.querySelector('#container');
+        //const func = 'createRed('+butt+')';
+        //const function123 = "createRed("+container+");";
+        //console.log(function123);
+
+        butt.onclick = function () {
+            let box = document.createElement('div');
+            box.style.width = 100;
+            box.style.height = 100;
+            box.style.backgroundColor = '#f00';
+            box.onmouseover = function () {
+                this.style.backgroundColor = getRandomColor();
+            }
+            container.appendChild(box);
         };
 
-        function stringReturn(obj) {
-            const { city, uf, block, street, number } = obj;
-            let stringRet = `o usuario mora em ${city}/${uf}, no bairro ${block}, na rua '${street}' com numero ${number}`;
-            console.log(stringRet);
-        }
-
-        stringReturn(address);
-
-        let x, y;
-
-        x = 100, y = 200;
-
-        function pares(a, b) {
-            for (let i = a; i <= b; i++) {
-                (i % 2 === 0) ? console.log(i) : false
+        function getRandomColor() {
+            var letters = "0123456789ABCDEF";
+            var color = "#";
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
             }
+            return color;
         }
-        pares(x, y);
+        var newColor = getRandomColor();
+        let mylist = document.createElement('ul');
+        container.appendChild(mylist);
+        const vec = ['Diego', 'Gabriel', 'Lucas'];
 
-        array1 = ["test", "test1", "Javascript", "java"];
-        function isIn(array) {
-            return array.indexOf("Javascript") !== -1;
-
+        for (const x of vec) {
+            let myli = document.createElement('li');
+            let mynode = document.createTextNode(x);
+            myli.appendChild(mynode);
+            mylist.appendChild(myli);
         }
-
-        console.log(isIn(array1));
-
-        function iftests(value) {
-            if (value > 6) {
-                console.log("jedimaster");
-            } else if (value > 3) {
-                console.log("advanced");
-            } else if (value > 1) {
-                console.log("intermediate");
-            } else {
-                console.log("beginner");
-            }
-
-        }
-
-        const users = [
-            {
-                name: "Diego",
-                skills: ["JS", "React", "Redux"]
-            },
-            {
-                name: "Gabriel",
-                skills: ["VueJS", "Ruby on Rails", "Elixir"]
-            }
-        ]
-
-        function percorre(objarray) {
-            //const test = objarray;
-            for (user of objarray) {
-                const { name, skills } = user;
-                console.log(`O ${name} possui as skills ${skills.join()}`);
-            }
-        }
-
-        percorre(users);
     </script>
 </body>
 
