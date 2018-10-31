@@ -8,7 +8,8 @@
 <body>
     <h1 id="testh1">JS Basics!</h1>
     <div id="container" class="box">
-
+        <input type="text" name="nome" id="nome">
+        <button onClick="adicionar()">Adicionar</button>
         <button id="butt123"> criar quadrado vermelho</button>
     </div>
 
@@ -50,6 +51,25 @@
             let mynode = document.createTextNode(x);
             myli.appendChild(mynode);
             mylist.appendChild(myli);
+        }
+
+        function adicionar() {
+            let target = document.querySelector('input[name="nome"]');
+
+
+
+            let myli = document.createElement('li');
+            let mynode = document.createTextNode(target.value);
+
+            myli.onclick = function () {
+                this.parentElement.removeChild(this);
+            };
+            myli.appendChild(mynode);
+            mylist.appendChild(myli);
+            target.value = "";
+
+
+
         }
     </script>
 </body>
