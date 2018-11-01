@@ -6,72 +6,14 @@
 </head>
 
 <body>
-    <h1 id="testh1">JS Basics!</h1>
-    <div id="container" class="box">
-        <input type="text" name="nome" id="nome">
-        <button onClick="adicionar()">Adicionar</button>
-        <button id="butt123"> criar quadrado vermelho</button>
+    <div id="app">
+        <ul>
+        </ul>
+
+        <input type="text" placeholder="digite um todo">
+        <button>adicionar</button>
+        <script src="todos.js"></script>
     </div>
-
-
-    <script>
-        //javascript
-        const butt = document.querySelector('#butt123');
-        const container = document.querySelector('#container');
-        //const func = 'createRed('+butt+')';
-        //const function123 = "createRed("+container+");";
-        //console.log(function123);
-
-        butt.onclick = function () {
-            let box = document.createElement('div');
-            box.style.width = 100;
-            box.style.height = 100;
-            box.style.backgroundColor = '#f00';
-            box.onmouseover = function () {
-                this.style.backgroundColor = getRandomColor();
-            }
-            container.appendChild(box);
-        };
-
-        function getRandomColor() {
-            var letters = "0123456789ABCDEF";
-            var color = "#";
-            for (var i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
-        }
-        var newColor = getRandomColor();
-        let mylist = document.createElement('ul');
-        container.appendChild(mylist);
-        const vec = ['Diego', 'Gabriel', 'Lucas'];
-
-        for (const x of vec) {
-            let myli = document.createElement('li');
-            let mynode = document.createTextNode(x);
-            myli.appendChild(mynode);
-            mylist.appendChild(myli);
-        }
-
-        function adicionar() {
-            let target = document.querySelector('input[name="nome"]');
-
-
-
-            let myli = document.createElement('li');
-            let mynode = document.createTextNode(target.value);
-
-            myli.onclick = function () {
-                this.parentElement.removeChild(this);
-            };
-            myli.appendChild(mynode);
-            mylist.appendChild(myli);
-            target.value = "";
-
-
-
-        }
-    </script>
 </body>
 
 </html>
